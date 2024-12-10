@@ -13,6 +13,8 @@ namespace ComicsPOO.Windows
         public frmProductoAE()
         {
             InitializeComponent();
+            rbtComic.CheckedChanged += new EventHandler(frmProductoAE_Load);
+            rbtFigurita.CheckedChanged += new EventHandler(frmProductoAE_Load);
         }
         public Producto? GetProducto()
         {
@@ -44,9 +46,11 @@ namespace ComicsPOO.Windows
                         Altura = float.Parse(txtAltura.Text),
                         Stock = (int)nudStock.Value,
                         Precio = decimal.Parse(txtPrecio.Text),
+                        
                     };
                     producto = figurita;
                 }
+                
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -55,14 +59,19 @@ namespace ComicsPOO.Windows
 
 
 
-        //NO PUEDO CARGAR EL COMBOBOX EN CASO DE QUE EL PRODUCTO NO SEA UN CÓMIC
         private void frmProductoAE_Load(object sender, EventArgs e)
+        {
+            CargarCombo(); 
+            ManejarControles(rbtComic.Checked ? TipoProducto.Comic : TipoProducto.Figurita);
+        }
+
+        private void CargarCombo()
         {
             if (rbtComic.Checked)
             {
                 CombosHelper.CargarComboTipoComic(ref cboTipo);
             }
-            else
+            else if (rbtFigurita.Checked)
             {
                 CombosHelper.CargarComboTipoProducto(ref cboTipo);
             }

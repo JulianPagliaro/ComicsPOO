@@ -5,10 +5,12 @@ namespace ComicsPOO.Datos
     public class Comiqueria
     {
         private readonly List<Producto> productos;
+        private SerializadorXml serializadorXml;
 
-        private int nombre;
 
-        public int Nombre
+        private string nombre;
+
+        public string Nombre
         {
             get { return nombre; }
             set { nombre = value; }
@@ -17,7 +19,10 @@ namespace ComicsPOO.Datos
         {
             productos = new List<Producto>();
             Nombre = nombre;
+            serializadorXml = new SerializadorXml();
+            productos = serializadorXml.LeerDatos();
         }
+
         public bool Agregar(Producto producto)
         {
             if (!ExisteProducto(producto))
@@ -64,6 +69,22 @@ namespace ComicsPOO.Datos
             return new List<Producto>(productos);
         }
 
+        public int GetCantidad()
+        {
+            return productos.Count;
+        }
+
+        public void GuardarDatos()
+        {
+            serializadorXml.GuardarDatos(productos);
+
+        }
+        public void RecuperarDatos()
+        {
+            var datosRecuperados = serializadorXml.LeerDatos();
+            productos.Clear();
+            productos.AddRange(datosRecuperados);
+        }
         public bool ExisteProducto(Producto producto)
         {
             return productos.Any(p => p.Descripcion == producto.Descripcion &&

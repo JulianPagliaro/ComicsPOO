@@ -116,6 +116,7 @@
             tsbBorrar.Size = new Size(52, 67);
             tsbBorrar.Text = "Borrar";
             tsbBorrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbBorrar.Click += tsbBorrar_Click;
             // 
             // tsbEditar
             // 
@@ -220,6 +221,7 @@
             tsbGuardar.Size = new Size(53, 67);
             tsbGuardar.Text = "Guardar";
             tsbGuardar.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbGuardar.Click += tsbGuardar_Click;
             // 
             // tsbSalir
             // 

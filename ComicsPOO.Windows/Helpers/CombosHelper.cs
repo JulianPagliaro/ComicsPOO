@@ -10,13 +10,13 @@ namespace ComicsPOO.Windows.Helpers
             cbo.DropDownStyle=ComboBoxStyle.DropDownList;
             cbo.SelectedIndex=0;
         }
-        public static void CargarComboTipoProducto(ref ToolStripComboBox cbo)
+        public static void CargarComboTipoProducto(ref ComboBox cbo)
         {
             var lista = Enum.GetValues(typeof(TipoProducto)).Cast<TipoProducto>().ToList();
-            foreach (var item in lista)
-            {
-                cbo.Items.Add(item);
-            }
+            //foreach (var item in lista)
+            //{
+            //    cbo.Items.Add(item);
+            //}
             cbo.DropDownStyle= ComboBoxStyle.DropDownList;
             cbo.SelectedIndex = 0;
         }
